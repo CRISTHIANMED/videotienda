@@ -2,7 +2,6 @@ package co.edu.utp.misiontic.cesardiaz.videotienda.model.entity;
 
 import java.util.List;
 
-import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

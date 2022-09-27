@@ -10,11 +10,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Categoria")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
 
     @Id
@@ -24,7 +28,11 @@ public class Category {
     @Column(name = "nombre", nullable = false, length = 100)
     private String name;
 
-    @OneToMany
-    private List<Movie> categoriries;
+    @OneToMany(mappedBy = "category")
+    private List<Movie> movies;
+    
+    public Category(String name) {
+        this.name = name;
+    }
 
 }

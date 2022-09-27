@@ -3,12 +3,11 @@
 class Category {
     - String name
     + void setName(String name)
-    + String getName() 
-
+    + String getName()
 }
 
 class Movie {
-    - Long code 
+    - Long code
     - String name
     - String description
     - Integer length
@@ -17,6 +16,15 @@ class Movie {
     + get()
 }
 
-Category "1" o-- "*" Movie
+class User {
+    - String username
+    - String password
+    - String name
+    - String email
+    - Boolean active
+    + set()
+    + get()
+}
 
+Category "1" o-- "*" Movie
 @enduml

@@ -8,9 +8,9 @@ import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.MovieDto;
 
 public interface CatalogService {
 
-    List<CategoryDto> getCategory();
+    List<CategoryDto> getCategories();
 
     Optional<CategoryDto> getCategoryById(Integer id);
 
-    List<MovieDto> getMoviesByCategoryId(Integer CategoryId);  
+    List<MovieDto> getMoviesByCategoryId(Integer categoryId);
 }

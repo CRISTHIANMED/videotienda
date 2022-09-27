@@ -1,8 +1,4 @@
 # Proyecto de Videotienda
-Este proyecto es el logro realizado en elciclo 3 de mision tic 2022 UTP
+Este proyecto es el logro realizado en el ciclo 3 de MisionTIC 2022 UTP
 
-**Autor**: Cristhian Medina
-
-
-
-
+**Autor**: Cesar Augusto Díaz

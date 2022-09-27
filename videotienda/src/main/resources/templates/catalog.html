@@ -14,7 +14,7 @@
 
 <body class="d-flex h-100 text-center text-white bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-5">
+        <header class="mb-auto">
             <div>
                 <h3 class="float-md-start mb-0">
                     <svg class="logo mb-1" viewBox="0 0 70 70.01724265514588">
@@ -170,12 +170,12 @@
                         </li>
                     </ul>
                 </div>
-                <div id="error" th:if="${error != null}" class="container justify-content-center">
-                    <div class= "alert alert-warning text-dark" role="alert">
-                        <span th:text="${error}">Error</span>
+                <div id="error" th:if="${error != null}" >
+                    <div th:text="${error}" class="alert alert-warning text-dark" role="alert">
+                        Error
                     </div>
                 </div>
-                <div id="results" th:if="${error == null}" class="overflow-auto">
+                <div id="results" th:if="${error == null}">
                     <h1 th:text="${title}">Hola</h1>
                     <div class="d-flex flex-column flex-shrink-0 p-3 album">
                         <div class="container">
@@ -183,7 +183,7 @@
                                 <p>Please select a category to see videos</p>
                             </div>
                             <div th:if="${id != null}"
-                                class="justify-content-center row row-cols-1 row-cols-sm-2 row-cols-md-3 rows-cols-lg-3 g-3">
+                                class="row row-cols-1 row-cols-sm-2 row-cols-md-3 rows-cols-lg-3 g-3">
                                 <div th:if="${movies.isEmpty()}">
                                     <p>No videos in this category</p>
                                 </div>
@@ -200,8 +200,7 @@
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="btn-group m-2">
-                                                <button type="button"
-                                                    class="btn btn-sm btn-outline-secondary">Detail</button>
+                                                <button type="button" class="btn btn-sm btn-outline-secondary">Detail</button>
                                                 <button type="button"
                                                     class="btn btn-sm btn-outline-secondary">Cart</button>
                                             </div>
@@ -217,7 +216,7 @@
                 </div>
             </div>
         </main>
-        <footer class="mt-auto text-white-50 pt-3">
+        <footer class="mt-auto text-white-50">
             <p>Developed by <a href="mailto:black@utp.edu.co">Cesar Diaz</a>. &copy; 2022 </p>
         </footer>
     </div>

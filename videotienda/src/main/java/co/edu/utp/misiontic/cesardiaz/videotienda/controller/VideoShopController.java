@@ -18,6 +18,11 @@ public class VideoShopController {
 
     private CatalogService catalogService;
 
+    @GetMapping(value = { "/", "/index", "/index.html" })
+    public String goToIndex(Model model) {
+        return "index";
+    }
+
     @GetMapping("/catalog")
     public String goToCatalog(Model model) {
         var categories = this.catalogService.getCategories();
@@ -61,5 +66,10 @@ public class VideoShopController {
     @GetMapping("/login")
     public String goToLogin(Model model) {
         return "login";
+    }
+
+    @GetMapping("/cart")
+    public String goToCart(Model model) {
+        return "cart";
     }
 }

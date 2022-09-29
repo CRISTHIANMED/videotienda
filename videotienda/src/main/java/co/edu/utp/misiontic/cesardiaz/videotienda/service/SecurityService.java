@@ -1,6 +1,5 @@
 package co.edu.utp.misiontic.cesardiaz.videotienda.service;
 
-
 import java.util.List;
 
 import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.UserRequest;
@@ -23,5 +22,4 @@ public interface SecurityService {
     void activateUser(String username);
 
     void inactivateUser(String username);
-    
 }

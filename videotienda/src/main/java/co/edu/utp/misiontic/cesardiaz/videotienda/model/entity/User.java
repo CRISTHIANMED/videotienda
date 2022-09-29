@@ -15,19 +15,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
-
     @Id
     @Column(name = "user_id")
-    private String username;
-
+    private String username; // user_name
+    
     private String password;
-
+    
     private String name;
 
     @Column(unique = true)
     private String email;
-
+    
     private Boolean active;
-
+    
     private Boolean admin;
 }

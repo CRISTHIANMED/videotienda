@@ -20,10 +20,9 @@ public class SecurityServiceImpl implements SecurityService {
 
     @Override
     public UserResponse validateUser(String username, String password) {
-
         // var userOp = userRepository.findById(username);
         // if (userOp.isEmpty()) {
-        // throw new RuntimeException("Ususario no existe");
+        // throw new RuntimeException("Usuario no existente");
         // }
 
         // var user = userOp.get();
@@ -32,14 +31,14 @@ public class SecurityServiceImpl implements SecurityService {
         // }
 
         // if (!user.getPassword().equals(password)) {
-        // throw new RuntimeException("Credenciales invalidas");
+        // throw new RuntimeException("Credenciales inválidas");
         // }
 
         var userOp = userRepository.findByUsernameAndPasswordAndActiveIsTrue(username, password);
         if (userOp.isEmpty()) {
-            throw new RuntimeException("Credenciales invalidas");
+            throw new RuntimeException("Credenciales inválidas");
         }
-
+        
         var user = userOp.get();
         return UserResponse.builder()
                 .username(user.getUsername())
@@ -47,12 +46,10 @@ public class SecurityServiceImpl implements SecurityService {
                 .email(user.getEmail())
                 .admin(user.getAdmin())
                 .build();
-
     }
 
     @Override
     public List<UserResponse> getAllUsers() {
-
         return userRepository.findAll().stream()
                 .map(u -> UserResponse.builder()
                         .username(u.getUsername())
@@ -66,7 +63,6 @@ public class SecurityServiceImpl implements SecurityService {
     @Override
     public UserResponse getUserByUsername(String username) {
         var userOp = userRepository.findById(username);
-
         if (userOp.isEmpty()) {
             throw new RuntimeException("El usuario no existe");
         }
@@ -83,38 +79,50 @@ public class SecurityServiceImpl implements SecurityService {
     @Override
     public void createUser(UserRequest user) {
 
-        var userOp = userRepository.findById(user.getUsername());
-        if (userOp.isPresent()) {
+        var userOp = userRepository.findById(user.getUsername()); 
+        if(userOp.isPresent()){
             throw new RuntimeException("No puede utilizar ese nombre de usuario");
         }
 
         userOp = userRepository.findByEmail(user.getEmail());
-        if (userOp.isPresent()) {
-            throw new RuntimeException("Ya existe un usuario reistrado con ese correo electrónico");
+        if(userOp.isPresent()){
+            throw new RuntimeException("Ya existe un usuario registrado con ese correo electrónico");
         }
-
+        
         var userDb = new User();
         userDb.setUsername(user.getUsername());
         userDb.setPassword(user.getPassword());
-        userDb.setUsername(user.getName());
+        userDb.setName(user.getName());
         userDb.setEmail(user.getEmail());
         userDb.setActive(true);
         userDb.setAdmin(user.getAdmin());
-
         userDb = userRepository.save(userDb);
 
     }
 
     @Override
     public void updateUser(UserRequest user) {
-        // TODO Auto-generated method stub
+        var userOp = userRepository.findById(user.getUsername());
+        if (userOp.isEmpty()) {
+            throw new RuntimeException("El usuario no existe");
+        }
 
+        var userDb = userOp.get();
+        userDb.setUsername(user.getUsername());
+        userDb.setName(user.getName());
+        userDb.setEmail(user.getEmail());
+        userDb.setAdmin(user.getAdmin());
+        userDb = userRepository.save(userDb);
     }
 
     @Override
     public void deleteUser(String username) {
-        // TODO Auto-generated method stub
+        var userOp = userRepository.findById(username);
+        if (userOp.isEmpty()) {
+            throw new RuntimeException("El usuario no existe");
+        }
 
+        userRepository.delete(userOp.get());
     }
 
     @Override
@@ -127,15 +135,13 @@ public class SecurityServiceImpl implements SecurityService {
         var user = userOp.get();
         user.setActive(true);
         userRepository.save(user);
-
     }
 
     @Override
     public void inactivateUser(String username) {
-
         var userOp = userRepository.findById(username);
         if(userOp.isEmpty()){
-            throw new RuntimeException("el usuario no existe");
+            throw new RuntimeException("El usuario no existe");
         }
 
         var user = userOp.get();

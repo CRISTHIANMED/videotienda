@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.LoginRequest;
 import co.edu.utp.misiontic.cesardiaz.videotienda.service.SecurityService;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("api/login")
 public class LoginRestController {
@@ -20,7 +22,7 @@ public class LoginRestController {
     // PATCH -> Actualizar Campo
     // DELETE -> Borrar (D)
 
-    private SecurityService securityService;
+    private final SecurityService securityService;
 
     @PostMapping
     public ResponseEntity<?> login(@RequestBody LoginRequest user) {
@@ -31,6 +33,11 @@ public class LoginRestController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                     .body(ex.getMessage());
         }
+    }
+
+    @PostMapping("/fake")
+    public  ResponseEntity<?> fakeLogin() {
+        return ResponseEntity.badRequest().build();
     }
 
 }

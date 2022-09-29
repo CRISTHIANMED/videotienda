@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.LoginRequest;
-import co.edu.utp.misiontic.cesardiaz.videotienda.controller.dto.UserResponse;
 import co.edu.utp.misiontic.cesardiaz.videotienda.service.SecurityService;
 
 @RestController

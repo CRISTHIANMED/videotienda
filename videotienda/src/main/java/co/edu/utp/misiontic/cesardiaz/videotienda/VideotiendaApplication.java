@@ -36,7 +36,7 @@ public class VideotiendaApplication {
 		public void run(String... args) throws Exception {
 			//loadUsers();
 			//loadCategories();
-			loadMovies1();
+			//loadMovies1();
 		}
 
 		private void loadUsers() {

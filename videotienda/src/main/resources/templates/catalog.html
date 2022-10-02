@@ -89,7 +89,7 @@
                         <ul class="nav nav-pills flex-column mb-auto">
                             <li th:each="cat: ${categories}" class="nav-item">
                                 <a th:href="@{/catalog/{id}(id=${cat.id})}"
-                                    th:class="'nav-link '+${cat.id == id ? 'active' : ''}" aria-current="page">
+                                    th:class="'nav-link '+ ${cat.id == id ? 'active' : ''}" aria-current="page">
                                     <span th:text="${cat.name}">Action</span>
                                 </a>
                             </li>
